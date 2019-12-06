@@ -12,7 +12,8 @@ public class DayOne {
         try (Stream<String> stream = Files.lines(Paths.get(pathName))) {
             int[] array = stream.mapToInt(i -> Integer.parseInt(i)).toArray();
             for(int i = 0; i < array.length; i++) {
-                total += fuelCalculation(array[i]);
+                int initValue = fuelCalculation(array[i]);
+                total += calcTotalFuel(initValue, initValue);
             }
             System.out.println(total);
         } catch (IOException e) {
@@ -20,6 +21,16 @@ public class DayOne {
         }
         finally {
             return total;
+        }
+    }
+
+    private static int calcTotalFuel(int fuel, int total) {
+        int newFuel = fuelCalculation(fuel);
+        if (newFuel <= 0) {
+            return total;
+        } else {
+            total+= newFuel;
+            return calcTotalFuel(newFuel, total);
         }
     }
 
