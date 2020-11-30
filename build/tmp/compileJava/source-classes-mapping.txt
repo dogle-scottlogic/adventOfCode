@@ -1,0 +1,12 @@
+com/adventOfCode/twentyNineteen/dayOne/PuzzleDayOne.java
+ com.adventOfCode.twentyNineteen.dayOne.PuzzleDayOne
+com/adventOfCode/common/FileReader.java
+ com.adventOfCode.common.FileReader
+com/adventOfCode/common/PuzzleDay.java
+ com.adventOfCode.common.PuzzleDay
+com/adventOfCode/twentyNineteen/Main.java
+ com.adventOfCode.twentyNineteen.Main
+com/adventOfCode/twentyNineteen/dayOne/DayOnePartOne.java
+ com.adventOfCode.twentyNineteen.dayOne.DayOnePartOne
+com/adventOfCode/twentyNineteen/dayOne/DayOnePartTwo.java
+ com.adventOfCode.twentyNineteen.dayOne.DayOnePartTwo
