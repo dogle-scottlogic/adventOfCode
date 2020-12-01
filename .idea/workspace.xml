@@ -23,22 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="85255865-5825-4004-87ad-90f783da8e54" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/adventOfCode.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdventOfCode/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdventOfCode/.idea/description.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdventOfCode/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdventOfCode/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdventOfCode/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdventOfCode/.idea/project-template.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdventOfCode/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdventOfCode/AdventOfCode.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdventOfCode/src/com/dave/DayOne.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdventOfCode/src/com/dave/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inputs/day1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adventOfCode/common/FileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adventOfCode/common/FileReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adventOfCode/twentyNineteen/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adventOfCode/twentyNineteen/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +56,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../blog" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -84,6 +71,15 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration default="true" type="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <option name="AUTO_RESTART" value="false" />
+      <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
@@ -112,40 +108,53 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1877" height="285" key="GridCell.Tab.0.bottom" timestamp="1606748205410">
+    <state width="406" height="466" key="DebuggerActiveHint" timestamp="1606814103598">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1606748205410" />
-    <state width="1877" height="285" key="GridCell.Tab.0.center" timestamp="1606748205410">
+    <state width="406" height="466" key="DebuggerActiveHint/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1606814103598" />
+    <state x="740" y="279" key="FileChooserDialogImpl" timestamp="1606750900920">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.center/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1606748205410" />
-    <state width="1877" height="285" key="GridCell.Tab.0.left" timestamp="1606748205410">
+    <state x="740" y="279" key="FileChooserDialogImpl/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1606750900920" />
+    <state width="1877" height="352" key="GridCell.Tab.0.bottom" timestamp="1606815265462">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.left/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1606748205410" />
-    <state width="1877" height="285" key="GridCell.Tab.0.right" timestamp="1606748205410">
+    <state width="1877" height="352" key="GridCell.Tab.0.bottom/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1606815265462" />
+    <state width="1877" height="352" key="GridCell.Tab.0.center" timestamp="1606815265462">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.right/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1606748205410" />
-    <state width="1877" height="352" key="GridCell.Tab.1.bottom" timestamp="1606746899087">
+    <state width="1877" height="352" key="GridCell.Tab.0.center/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1606815265462" />
+    <state width="1877" height="352" key="GridCell.Tab.0.left" timestamp="1606815265461">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.1.bottom/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1606746899087" />
-    <state width="1877" height="352" key="GridCell.Tab.1.center" timestamp="1606746899086">
+    <state width="1877" height="352" key="GridCell.Tab.0.left/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1606815265461" />
+    <state width="1877" height="352" key="GridCell.Tab.0.right" timestamp="1606815265462">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.1.center/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1606746899086" />
-    <state width="1877" height="352" key="GridCell.Tab.1.left" timestamp="1606746899085">
+    <state width="1877" height="352" key="GridCell.Tab.0.right/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1606815265462" />
+    <state width="1877" height="352" key="GridCell.Tab.1.bottom" timestamp="1606815265462">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.1.left/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1606746899085" />
-    <state width="1877" height="352" key="GridCell.Tab.1.right" timestamp="1606746899086">
+    <state width="1877" height="352" key="GridCell.Tab.1.bottom/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1606815265462" />
+    <state width="1877" height="352" key="GridCell.Tab.1.center" timestamp="1606815265462">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="352" key="GridCell.Tab.1.right/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1606746899086" />
+    <state width="1877" height="352" key="GridCell.Tab.1.center/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1606815265462" />
+    <state width="1877" height="352" key="GridCell.Tab.1.left" timestamp="1606815265462">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="352" key="GridCell.Tab.1.left/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1606815265462" />
+    <state width="1877" height="352" key="GridCell.Tab.1.right" timestamp="1606815265462">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="352" key="GridCell.Tab.1.right/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1606815265462" />
+    <state width="968" height="533" key="XDebugger.FullValuePopup" timestamp="1606814375652">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="968" height="533" key="XDebugger.FullValuePopup/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1606814375652" />
     <state x="667" y="124" width="585" height="801" key="find.popup" timestamp="1606744105884">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -158,16 +167,5 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="616" y="243" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1606746968770" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/adventOfCode/common/FileReader.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
