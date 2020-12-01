@@ -1,6 +1,9 @@
 package com.adventOfCode.common;
 
 import java.io.File;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -18,6 +21,18 @@ public class FileReader {
             System.out.println("Error reading in file: " + e.getMessage());
         }
         return list;
+    }
+
+    public static String readFileString(String filePath) {
+        String result = "";
+        try {
+            Path path = Path.of(filePath);
+            result = Files.readString(path, StandardCharsets.US_ASCII);
+        }
+        catch (Exception e ) {
+            System.out.println("Error reading in file: " + e.getMessage());
+        }
+        return result;
     }
 
 }
