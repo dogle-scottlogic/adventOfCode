@@ -32,43 +32,29 @@ import java.util.List;
  * <p>
  * Of course, your expense report is much larger. Find the two entries that sum to 2020; what do you get if you multiply them together?
  */
-public class DayOnePartOne implements PuzzleDay {
+public class DayOnePartOne extends DayOne {
 
-    private Integer findValue(Integer toFind, List<Integer> sortedList) {
-        for (int i = sortedList.size() -1; i >= 0; i--) {
-            if (sortedList.get(i) < toFind) {
-                return -1;
-            }
-
-            if (sortedList.get(i).equals(toFind)) {
-                return sortedList.get(i);
-            }
-        }
-        return -1;
+    public DayOnePartOne() {
+        super();
     }
 
     private Integer getResult(List<Integer> input) {
         int goal = 2020;
         Collections.sort(input);
 
+        Integer[] result = this.getTwoValuesThatSumToGoal(input, goal);
 
-        for (int i = 0; i < input.size(); i++) {
-            Integer currentValue = input.get(i);
-            Integer toFind = goal - currentValue;
-            Integer found = findValue(toFind, input);
-
-            if (found >= 0) {
-               return found * currentValue;
-            }
+        if (result != null) {
+            return result[0] * result[1];
         }
+
         return -1;
     }
 
     @Override
     public void solvePuzzle() {
         List<Integer> input = FileReader.readFileInts("src/main/java/com/adventOfCode/twentyTwenty/dayOne/input.txt");
-        Collections.sort(input);
         Integer result = getResult(input);
-        System.out.println(result >= 0 ? "Result is: " + result : "Not found");
+        System.out.println(result >= 0 ? "Result part two is: " + result : "Not found");
     }
 }
