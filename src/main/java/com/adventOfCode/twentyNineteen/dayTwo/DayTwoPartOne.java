@@ -52,55 +52,13 @@ import com.adventOfCode.common.PuzzleDay;
  */
 public class DayTwoPartOne implements PuzzleDay {
 
-    private final String add = "1";
-    private final String multiply = "2";
-    private final String end = "99";
-    private final int next = 4;
-
-    private boolean isNonEndingOperation(String opCode) {
-        return opCode.equals(add) || opCode.equals(multiply);
-    }
-
-    private String performCalculation(String inputOne, String inputTwo, String opCode) {
-        Integer inputOneInt = Integer.parseInt(inputOne);
-        Integer inputTwoInt = Integer.parseInt(inputTwo);
-        Integer result = opCode.equals(add) ? inputOneInt + inputTwoInt : inputOneInt * inputTwoInt;
-        return result.toString();
-    }
-
-    private String runProgram(String input) {
-        String [] values = input.split(",");
-        int currentIndex = 0;
-
-        while(currentIndex < values.length) {
-
-
-            String opCode = values[currentIndex];
-
-            if (opCode.equals(end)) {
-                return String.join(",", values);
-            }
-
-            if (isNonEndingOperation(opCode)) {
-                Integer inputOneIndex = Integer.parseInt(values[currentIndex + 1]);
-                Integer inputTwoIndex = Integer.parseInt(values[currentIndex + 2]);
-                String inputOne = values[inputOneIndex];
-                String inputTwo = values[inputTwoIndex];
-                String output = values[currentIndex + 3];
-
-                String result = performCalculation(inputOne, inputTwo, opCode);
-                values[Integer.parseInt(output)] = result;
-            }
-
-            currentIndex += next;
-        }
-        return String.join(",", values);
-    }
-
     @Override
     public void solvePuzzle() {
+        IntcodeProgram intcodeProgram = new IntcodeProgram();
+
         String input = FileReader.readFileString("src/main/java/com/adventOfCode/twentyNineteen/dayTwo/input.txt");
-        String result = runProgram(input);
+        String [] values = input.split(",");
+        String result = String.join(",", intcodeProgram.runProgram(values));
 
         System.out.println(result);
 

@@ -6,9 +6,9 @@ import java.util.List;
 
 public abstract class DayOne implements PuzzleDay {
 
-    private Integer findValue(Integer toFind, List<Integer> sortedList) {
+    private Integer findValue(Integer toFind, List<Integer> sortedList, Integer startPoint) {
         for (int i = sortedList.size() -1; i >= 0; i--) {
-            if (sortedList.get(i) < toFind) {
+            if (sortedList.get(i) < toFind || sortedList.get(i).equals(startPoint)) {
                 return -1;
             }
 
@@ -24,7 +24,7 @@ public abstract class DayOne implements PuzzleDay {
         for (int i = 0; i < sortedInput.size(); i++) {
             Integer currentValue = sortedInput.get(i);
             Integer toFind = goal - currentValue;
-            Integer found = this.findValue(toFind, sortedInput);
+            Integer found = this.findValue(toFind, sortedInput, currentValue);
 
             if (found >= 0) {
                 return new Integer[]{found, currentValue};
