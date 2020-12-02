@@ -23,6 +23,20 @@ public class FileReader {
         return list;
     }
 
+    public static List<String> readFileStringToList(String filePath) {
+        List<String> list = new ArrayList<>();
+        try {
+            Scanner scanner = new Scanner(new File(filePath));
+            while (scanner.hasNextLine()) {
+                list.add(scanner.nextLine());
+            }
+        } catch (Exception e) {
+            System.out.println("Error reading in file: " + e.getMessage());
+        }
+        return list;
+    }
+
+
     public static String readFileString(String filePath) {
         String result = "";
         try {
