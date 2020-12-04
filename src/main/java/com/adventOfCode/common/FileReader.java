@@ -36,6 +36,30 @@ public class FileReader {
         return list;
     }
 
+    public static List<String> readFileStringToListChunkByEmptyRow(String filePath) {
+        List<String> list = new ArrayList<>();
+        try {
+            String line = "";
+            Scanner scanner = new Scanner(new File(filePath));
+            while (scanner.hasNextLine()) {
+                String nextLine = scanner.nextLine();
+                if (nextLine.trim().isEmpty()) {
+                    list.add(line);
+                    line = "";
+                } else {
+                    line = line + " " + nextLine;
+
+                    if(!scanner.hasNextLine()) {
+                        list.add(line);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error reading in file: " + e.getMessage());
+        }
+        return list;
+    }
+
 
     public static String readFileString(String filePath) {
         String result = "";
