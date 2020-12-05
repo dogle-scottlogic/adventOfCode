@@ -1,7 +1,9 @@
-package com.adventOfCode.twentyNineteen;
+package com.adventOfCode;
 
 import com.adventOfCode.common.PuzzleDay;
 import com.adventOfCode.twentyNineteen.dayThree.DayThreePartOne;
+import com.adventOfCode.twentyTwenty.dayFive.DayFivePartOne;
+import com.adventOfCode.twentyTwenty.dayFive.DayFivePartTwo;
 import com.adventOfCode.twentyTwenty.dayFour.DayFourPartOne;
 import com.adventOfCode.twentyTwenty.dayFour.DayFourPartTwo;
 import com.adventOfCode.twentyTwenty.dayOne.DayOnePartOne;
@@ -37,8 +39,10 @@ public class Main {
 //        PuzzleDay dayThreePartOne = new DayThreePartOne();
 //        PuzzleDay dayThreePartTwo = new DayThreePartTwo();
 //        PuzzleDay dayFourPartOne = new DayFourPartOne();
-        PuzzleDay dayFourPartTwo = new DayFourPartTwo();
-//
+//        PuzzleDay dayFourPartTwo = new DayFourPartTwo();
+//        PuzzleDay dayFivePartOne = new DayFivePartOne();
+        PuzzleDay dayFivePartTwo = new DayFivePartTwo();
+
 //        dayOnePartOne.solvePuzzle();
 //        dayOnePartTwo.solvePuzzle();
 //        dayTwoPartOne.solvePuzzle();
@@ -46,7 +50,8 @@ public class Main {
 //        dayThreePartOne.solvePuzzle();
 //        dayThreePartTwo.solvePuzzle();
 //        dayFourPartOne.solvePuzzle();
-        dayFourPartTwo.solvePuzzle();
-
+//        dayFourPartTwo.solvePuzzle();
+//        dayFivePartOne.solvePuzzle();
+        dayFivePartTwo.solvePuzzle();
     }
 }
