@@ -8,6 +8,8 @@ import com.adventOfCode.twentyTwenty.dayFour.DayFourPartOne;
 import com.adventOfCode.twentyTwenty.dayFour.DayFourPartTwo;
 import com.adventOfCode.twentyTwenty.dayOne.DayOnePartOne;
 import com.adventOfCode.twentyTwenty.dayOne.DayOnePartTwo;
+import com.adventOfCode.twentyTwenty.daySix.DaySixPartOne;
+import com.adventOfCode.twentyTwenty.daySix.DaySixPartTwo;
 import com.adventOfCode.twentyTwenty.dayThree.DayThreePartTwo;
 import com.adventOfCode.twentyTwenty.dayTwo.DayTwoPartOne;
 import com.adventOfCode.twentyTwenty.dayTwo.DayTwoPartTwo;
@@ -41,7 +43,9 @@ public class Main {
 //        PuzzleDay dayFourPartOne = new DayFourPartOne();
 //        PuzzleDay dayFourPartTwo = new DayFourPartTwo();
 //        PuzzleDay dayFivePartOne = new DayFivePartOne();
-        PuzzleDay dayFivePartTwo = new DayFivePartTwo();
+//        PuzzleDay dayFivePartTwo = new DayFivePartTwo();
+//        PuzzleDay daySixPartOne = new DaySixPartOne();
+        PuzzleDay daySixPartTwo = new DaySixPartTwo();
 
 //        dayOnePartOne.solvePuzzle();
 //        dayOnePartTwo.solvePuzzle();
@@ -52,6 +56,8 @@ public class Main {
 //        dayFourPartOne.solvePuzzle();
 //        dayFourPartTwo.solvePuzzle();
 //        dayFivePartOne.solvePuzzle();
-        dayFivePartTwo.solvePuzzle();
+//        dayFivePartTwo.solvePuzzle();
+//        daySixPartOne.solvePuzzle();
+        daySixPartTwo.solvePuzzle();
     }
 }
