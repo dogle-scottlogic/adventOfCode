@@ -2,6 +2,8 @@ package com.adventOfCode;
 
 import com.adventOfCode.common.PuzzleDay;
 import com.adventOfCode.twentyNineteen.dayThree.DayThreePartOne;
+import com.adventOfCode.twentyTwenty.dayEight.DayEightPartOne;
+import com.adventOfCode.twentyTwenty.dayEight.DayEightPartTwo;
 import com.adventOfCode.twentyTwenty.dayFive.DayFivePartOne;
 import com.adventOfCode.twentyTwenty.dayFive.DayFivePartTwo;
 import com.adventOfCode.twentyTwenty.dayFour.DayFourPartOne;
@@ -36,34 +38,8 @@ public class Main {
 
         // 2020
 
-//        PuzzleDay dayOnePartOne = new DayOnePartOne();
-//        PuzzleDay dayOnePartTwo = new DayOnePartTwo();
-//        PuzzleDay dayTwoPartOne = new DayTwoPartOne();
-//        PuzzleDay dayTwoPartTwo = new DayTwoPartTwo();
-//        PuzzleDay dayThreePartOne = new DayThreePartOne();
-//        PuzzleDay dayThreePartTwo = new DayThreePartTwo();
-//        PuzzleDay dayFourPartOne = new DayFourPartOne();
-//        PuzzleDay dayFourPartTwo = new DayFourPartTwo();
-//        PuzzleDay dayFivePartOne = new DayFivePartOne();
-//        PuzzleDay dayFivePartTwo = new DayFivePartTwo();
-//        PuzzleDay daySixPartOne = new DaySixPartOne();
-//        PuzzleDay daySixPartTwo = new DaySixPartTwo();
-//        PuzzleDay daySevenPartOne = new DaySevenPartOne();
-        PuzzleDay daySevenPartTwo = new DaySevenPartTwo();
+        PuzzleDay dayEightPartTwo = new DayEightPartTwo();
 
-//        dayOnePartOne.solvePuzzle();
-//        dayOnePartTwo.solvePuzzle();
-//        dayTwoPartOne.solvePuzzle();
-//        dayTwoPartTwo.solvePuzzle();
-//        dayThreePartOne.solvePuzzle();
-//        dayThreePartTwo.solvePuzzle();
-//        dayFourPartOne.solvePuzzle();
-//        dayFourPartTwo.solvePuzzle();
-//        dayFivePartOne.solvePuzzle();
-//        dayFivePartTwo.solvePuzzle();
-//        daySixPartOne.solvePuzzle();
-//        daySixPartTwo.solvePuzzle();
-//        daySevenPartOne.solvePuzzle();
-        daySevenPartTwo.solvePuzzle();
+        dayEightPartTwo.solvePuzzle();
     }
 }
