@@ -8,6 +8,8 @@ import com.adventOfCode.twentyTwenty.dayFive.DayFivePartOne;
 import com.adventOfCode.twentyTwenty.dayFive.DayFivePartTwo;
 import com.adventOfCode.twentyTwenty.dayFour.DayFourPartOne;
 import com.adventOfCode.twentyTwenty.dayFour.DayFourPartTwo;
+import com.adventOfCode.twentyTwenty.dayNine.DayNinePartOne;
+import com.adventOfCode.twentyTwenty.dayNine.DayNinePartTwo;
 import com.adventOfCode.twentyTwenty.dayOne.DayOnePartOne;
 import com.adventOfCode.twentyTwenty.dayOne.DayOnePartTwo;
 import com.adventOfCode.twentyTwenty.daySeven.DaySevenPartOne;
@@ -38,8 +40,8 @@ public class Main {
 
         // 2020
 
-        PuzzleDay dayEightPartTwo = new DayEightPartTwo();
+        PuzzleDay dayNinePartTwo = new DayNinePartTwo();
 
-        dayEightPartTwo.solvePuzzle();
+        dayNinePartTwo.solvePuzzle();
     }
 }
