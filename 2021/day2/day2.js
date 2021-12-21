@@ -46,7 +46,6 @@ const calculatePosition = (input) => {
             default:
                 break;
         }
-        console.log(`hor: ${horizontalPos}, dep: ${depth}, aim: ${aim}`);
     });
     return horizontalPos * depth;
 };
