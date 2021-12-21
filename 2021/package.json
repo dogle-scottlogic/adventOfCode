@@ -1,0 +1,16 @@
+{
+  "name": "aoc",
+  "version": "1.0.0",
+  "description": "advent of code 2021",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "tsc --resolveJsonModule"
+  },
+  "author": "dogle",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.5.2"
+  },
+  "dependencies": {}
+}
