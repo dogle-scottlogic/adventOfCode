@@ -1,9 +1,14 @@
-import * as puzzle from './test.json'
+import * as puzzle from './day4.json'
 
 type Grid = Array<Array<string>>;
 type Coords = { rIndex: number, cIndex: number };
 const gridArray = puzzle.grids.split(/\n\n/);
 const grids: any = gridArray.map((grid) => grid.split(/\n/).map(row => row.trim().split(/\s+/)));
+
+type ScoreCard = {
+    gridResults: Array<{ rows: Array<number>, cols: Array<number> }>,
+    winningIndex: number | null;
+}
 
 const gridReduce = <T, R>(grid: Array<Array<T>>, reduce: (accumulator: R, cellValue: T, cellCoords: Coords) => R, initValue: R): R => {
     // for each row
@@ -16,28 +21,21 @@ const gridReduce = <T, R>(grid: Array<Array<T>>, reduce: (accumulator: R, cellVa
     return acc;
 }
 
-
-function checkGrids(grids: Array<Grid>, num: number): boolean {
+function checkGrids(grids: Array<Grid>, draw: number, scoreCard: ScoreCard): ScoreCard {
+    let winningIndex = null;
     // init the results with the default for each grid in the input
-    const gridResults =
-        Array.from({length: grids.length}, x => ({
-            // assume always a 5 x 5 grid for now
-            rows: [0, 0, 0, 0, 0],
-            cols: [0, 0, 0, 0, 0]
-        }));
-
     grids.forEach((grid: Grid, gridIndex: number) => {
         const matchingCoords = gridReduce<string, Coords | null>(grid, (acc, cellValue, cellCoords) => {
-            return parseInt(cellValue) === num ? cellCoords : acc;
+            return parseInt(cellValue) === draw ? cellCoords : acc;
         }, null);
 
         if (matchingCoords) {
             // when a number matches increment the col and row in the gridResults.
             // mark the number by adding an x to the end
-            const updatedResultsGrid = gridResults[gridIndex];
+            const updatedResultsGrid = scoreCard.gridResults[gridIndex];
             updatedResultsGrid.rows[matchingCoords.rIndex]++;
             updatedResultsGrid.cols[matchingCoords.cIndex]++;
-            gridResults[gridIndex] = updatedResultsGrid;
+            scoreCard.gridResults[gridIndex] = updatedResultsGrid;
             grids[gridIndex][matchingCoords.rIndex][matchingCoords.cIndex] =
                 "x" + grids[gridIndex][matchingCoords.rIndex][matchingCoords.cIndex];
 
@@ -46,32 +44,44 @@ function checkGrids(grids: Array<Grid>, num: number): boolean {
                 updatedResultsGrid.cols[matchingCoords.cIndex] === 5
             ) {
                 console.log("Grid number " + gridIndex + " has won");
-                return true
+                winningIndex = gridIndex;
+                return;
             }
-
         }
     })
-    return false;
+    return {
+        gridResults: scoreCard.gridResults,
+        winningIndex
+    };
 }
 
-
-function playBingo() {
-    let winnerFound = false;
-
-    puzzle.draw.forEach((num: number) => {
-        winnerFound = checkGrids(grids, num);
-
-        if (winnerFound) {}
-        return true
-    });
-
-    // for each number drawn: go through all numbers in all grids
-    // when a number matches increment the col and row in the gridResults.
-    // mark the number by adding an x to the end
-    // if the number === 5 then that grid has won.
-    // pass the grid to a function that will total the values
-    // iterate the grid and total all numbers not marked with an x.
-    // will need an iterate grid util function
+function calculateScore(winningGGrid: Grid): number {
+    const sum = gridReduce(winningGGrid, (acc, cur) => {
+        return cur.charAt(0) === 'x' ? acc : acc += parseInt(cur)
+    }, 0);
+    return sum;
 }
 
-playBingo()
+function playBingo(): number {
+    let scoreCard: ScoreCard = {
+        gridResults: Array.from({length: grids.length}, x => ({
+            // assume always a 5 x 5 grid for now
+            rows: [0, 0, 0, 0, 0],
+            cols: [0, 0, 0, 0, 0]
+        })),
+        winningIndex: null
+    }
+
+    for (const draw of puzzle.draw) {
+        scoreCard = checkGrids(grids, draw, scoreCard);
+        console.log(scoreCard.winningIndex)
+        if (scoreCard.winningIndex != null) {
+            const sum = calculateScore(grids[scoreCard.winningIndex])
+            return sum * draw;
+        }
+    }
+    return 0
+}
+
+const result = playBingo()
+console.log(result)
