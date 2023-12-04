@@ -25,14 +25,6 @@ export function dayTwoPartOne() {
   const isGamePossible = (game: string): boolean => {
     const sets = game.split(";");
 
-    // sets.forEach(set => {
-    //     const cubes = set.split(",");
-    //     cubes.forEach(cube => {
-    //         const cubeParts = cube.trim().split(" ");
-    //         gameCount[cubeParts[1] as keyof Cubes ]+= Number(cubeParts[0])
-    //     });
-    // })
-
     return sets.reduce((acc, set) => {
       const cubes = set.split(",");
       const setCount: Cubes = {
@@ -58,6 +50,38 @@ export function dayTwoPartOne() {
     if (gamePossible) {
       result += i + 1;
     }
+  });
+  console.log(result);
+}
+
+export function dayTwoPartTwo() {
+  let result = 0;
+  const games = readData().map((line) => line.split(":")[1].trim());
+
+  const findMinCubes = (game: string): Cubes => {
+    const minSet: Cubes = {
+      red: 0,
+      green: 0,
+      blue: 0,
+    };
+    const sets = game.split(";");
+    sets.forEach((set) => {
+      const cubes = set.split(",");
+      cubes.forEach((cube) => {
+        const cubeParts = cube.trim().split(" ");
+        const currentCount = minSet[cubeParts[1] as keyof Cubes];
+        if (Number(cubeParts[0]) > currentCount) {
+          minSet[cubeParts[1] as keyof Cubes] = Number(cubeParts[0]);
+        }
+      });
+    });
+    return minSet;
+  };
+
+  games.forEach((g) => {
+    const minCubes = findMinCubes(g);
+    const power = minCubes.blue * minCubes.green * minCubes.red;
+    result += power;
   });
   console.log(result);
 }
