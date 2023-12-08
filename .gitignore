@@ -32,3 +32,4 @@ hs_err_pid*
 
 2023/*.js
 2023/node_modules/
+*.map
