@@ -19,6 +19,14 @@ export function daySixPartOne() {
     console.log("Result:", sum)
 }
 
+export function daySixPartTwo() {
+    const data = readData();
+    const time = Number(data[0].split("Time:")[1].replace(/\s+/g, ""));
+    const distance = Number(data[1].split("Distance:")[1].replace(/\s+/g, ""));
+    const wins = calculateWaysToWinOptimal(time, distance);
+    console.log("Result:", wins)
+}
+
 function calculateWaysToWin(time: number, recordDistance: number): number[] {
     const winningTimes = [];
     // 0 is always 0
@@ -33,4 +41,26 @@ function calculateWaysToWin(time: number, recordDistance: number): number[] {
     }
 
     return winningTimes;
+}
+
+/**
+ * Could be better - don't really need to keep going after a certain point but this works
+ * @param time 
+ * @param recordDistance 
+ * @returns 
+ */
+function calculateWaysToWinOptimal(time: number, recordDistance: number): number {
+    let waysToWin = 0;
+    // 0 is always 0
+    // hold for total time is always 0
+    for (let holdTime = 1; holdTime < time; holdTime++) {
+        // holdTime mps
+        const timeLeftToMove = time - holdTime;
+        const raceTime = (holdTime * timeLeftToMove);        
+        if (raceTime > recordDistance) {
+            waysToWin++;
+        }
+    }
+
+    return waysToWin;
 }
