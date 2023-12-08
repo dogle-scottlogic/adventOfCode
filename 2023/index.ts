@@ -1,10 +1,10 @@
-import { dayFivePartOne, dayFivePartTwo } from "./dayFive";
-import { dayFourPartOne, dayFourPartTwo } from "./dayFour";
-import { dayOnePartOne, dayOnePartTwo } from "./dayOne";
-import { daySevenPartOne, daySevenPartTwo } from "./daySeven";
-import { daySixPartOne, daySixPartTwo } from "./daySix";
-import { dayThreePartOne, dayThreePartTwo } from "./dayThree";
-import { dayTwoPartOne, dayTwoPartTwo } from "./dayTwo";
+import { dayFivePartOne, dayFivePartTwo } from "./5dayFive/dayFive";
+import { dayFourPartOne, dayFourPartTwo } from "./4dayFour/dayFour";
+import { dayOnePartOne, dayOnePartTwo } from "./1dayOne/dayOne";
+import { daySevenPartOne, daySevenPartTwo } from "./7daySeven/daySeven";
+import { daySixPartOne, daySixPartTwo } from "./6daySix/daySix";
+import { dayThreePartOne, dayThreePartTwo } from "./3dayThree/dayThree";
+import { dayTwoPartOne, dayTwoPartTwo } from "./2dayTwo/dayTwo";
 
 // dayOnePartOne();
 // dayOnePartTwo();
