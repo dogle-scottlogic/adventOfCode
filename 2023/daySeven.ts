@@ -17,11 +17,19 @@ function getHands(): { [key: string]: number } {
   return hands;
 }
 
-const CARD_MAPPING: { [key: string]: number } = {
+export const CARD_MAPPING_ONE: { [key: string]: number } = {
   A: 14,
   K: 13,
   Q: 12,
   J: 11,
+  T: 10,
+};
+
+const CARD_MAPPING_TWO: { [key: string]: number } = {
+  A: 14,
+  K: 13,
+  Q: 12,
+  J: 1,
   T: 10,
 };
 
@@ -30,64 +38,32 @@ type HAND_TYPE = "FiveOAK" | "FourOAK" | "FH" | "ThreeOAK" | "TP" | "OP" | "HC";
 export function daySevenPartOne() {
   let sum = 0;
   const hands = getHands();
-//   const test = orderHands([
-//     "K99QT",
-//     "TKQ7T",
-//     "22A7J",
-//     "267J9",
-//     "665JJ",
-//     "K856J",
-//     "977K9",
-//     "KKK8K",
-//     "53697",
-//     "3J337",
-//     "84A9K",
-//     "K4289",
-//     "4JA46",
-//     "K452K",
-//     "3K48Q",
-//     "99TT9",
-//     "A7JA9",
-//     "836AT",
-//     "J2KKK",
-//     "KK7KK",
-//     "QTAJK",
-//     "T4578",
-//     "TK55T",
-//     "44K9J",
-//     "KQT58",
-//     "66A6J",
-//     "K77KK",
-//     "6666Q",
-//     "8J8KJ",
-//     "69KQ7",
-//     "T27J3",
-//     "44999",
-//     "98885",
-//     "55655",
-//     "43343",
-//     "82247",
-//     "33336",
-//     "59JT4",
-//     "AQAJA",
-//     "J3626",
-//     "9379A",
-//     "JTTTA",
-//     "442A6",
-//     "73933",
-//   ]);
-//   test.forEach(t => {
-//     console.log("Hand: ", t, " Type ", getHandType(t));
-//   })
-    const orderedHands = orderHands(Object.keys(hands));
-    orderedHands.forEach((oh, i) => {
-      // console.log("hand score:", hands[oh], " rank: ", i + 1);
-      sum += hands[oh] * (i + 1);
-    });
+  const orderedHands = orderHands(
+    Object.keys(hands),
+    CARD_MAPPING_ONE,
+    getHandType
+  );
+  orderedHands.forEach((oh, i) => {
+    sum += hands[oh] * (i + 1);
+  });
   console.log(sum);
 }
 
-function getHandType(hand: string): HAND_TYPE {
+export function daySevenPartTwo() {
+  let sum = 0;
+  const hands = getHands();
+  const orderedHands = orderHands(
+    Object.keys(hands),
+    CARD_MAPPING_TWO,
+    getHandTypeWithWildcards
+  );
+  orderedHands.forEach((oh, i) => {
+    sum += hands[oh] * (i + 1);
+  });
+  console.log(sum);
+}
+
+export function getHandType(hand: string): HAND_TYPE {
   // console.log(hand);
   // Collated cards maps a card (e.g "K" to a count for that card in the hand)
   const collatedCards: { [card: string]: number } = {};
@@ -138,9 +114,70 @@ function getHandType(hand: string): HAND_TYPE {
   return handType;
 }
 
-function getTieBreakWinner(firstHand: string, secondHand: string): string {
+export function getHandTypeWithWildcards(hand: string): HAND_TYPE {
+  const handSansJokers = hand.replace(/J/g, "");
+  const numberOfJokers = hand.length - handSansJokers.length;
+  let handType: HAND_TYPE = getHandType(handSansJokers);
+  const getOneJokerHand = (): HAND_TYPE => {
+    switch (handType) {
+      case "FourOAK":
+        return "FiveOAK";
+      case "FH":
+      case "ThreeOAK":
+        return "FourOAK";
+      case "TP":
+        return "FH";
+      case "OP":
+        return "ThreeOAK";
+      default:
+        return "OP";
+    }
+  };
+
+  const getTwoJokerHand = (): HAND_TYPE => {
+    switch (handType) {
+      case "ThreeOAK":
+        return "FiveOAK";
+      case "OP":
+        return "FourOAK";
+      default:
+        return "ThreeOAK";
+    }
+  };
+
+  const getThreeJokerHand = (): HAND_TYPE => {
+    switch (handType) {
+      case "OP":
+        return "FiveOAK";
+      default:
+        return "FourOAK";
+    }
+  };
+
+  switch (numberOfJokers) {
+    case 0:
+      return handType;
+    case 1:
+      return getOneJokerHand();
+    case 2:
+      return getTwoJokerHand();
+    case 3:
+      return getThreeJokerHand();
+    case 4:
+    case 5:
+      return "FiveOAK";
+    default:
+      return handType;
+  }
+}
+
+function getTieBreakWinner(
+  firstHand: string,
+  secondHand: string,
+  cardMapping: { [key: string]: number }
+): string {
   const cardValue = (card: string) =>
-    CARD_MAPPING[card] ? CARD_MAPPING[card] : Number(card);
+    cardMapping[card] ? cardMapping[card] : Number(card);
   for (let i = 0; i < firstHand.length; i++) {
     if (cardValue(firstHand[i]) > cardValue(secondHand[i])) {
       return firstHand;
@@ -151,7 +188,11 @@ function getTieBreakWinner(firstHand: string, secondHand: string): string {
   return firstHand; // default to first hand but shouldn't get here
 }
 
-export function orderHands(hands: string[]): string[] {
+export function orderHands(
+  hands: string[],
+  cardMapping: { [key: string]: number },
+  getHandTypeFromHand: (hand: string) => HAND_TYPE
+): string[] {
   // The list of hands in order to return
   const orderedHands: string[] = [];
   // Map of hand to numeric value
@@ -178,7 +219,7 @@ export function orderHands(hands: string[]): string[] {
       !highestHandSameAsCurrent &&
       (!handBefore || handMapping[handBefore] !== handMapping[hand])
     ) {
-    //   console.log("Adding ", hand);
+      //   console.log("Adding ", hand);
       orderedHands.splice(indexOfFirstHigherHand, 0, hand);
     } else {
       // If they are the same then we need to do a second calculation
@@ -187,7 +228,7 @@ export function orderHands(hands: string[]): string[] {
         ? orderedHands.length - 1
         : handBeforeIndex;
       handBefore = orderedHands[handBeforeIndex];
-      let tieBreakWinner = getTieBreakWinner(hand, handBefore);
+      let tieBreakWinner = getTieBreakWinner(hand, handBefore, cardMapping);
       while (
         handBefore &&
         handMapping[handBefore] === handMapping[hand] &&
@@ -196,16 +237,16 @@ export function orderHands(hands: string[]): string[] {
         handBeforeIndex--;
         handBefore = orderedHands[handBeforeIndex];
         if (handBefore) {
-          tieBreakWinner = getTieBreakWinner(hand, handBefore);
+          tieBreakWinner = getTieBreakWinner(hand, handBefore, cardMapping);
         }
       }
-    //   console.log("Adding ", hand);
+      //   console.log("Adding ", hand);
       orderedHands.splice(handBeforeIndex + 1, 0, hand);
     }
   };
 
   hands.forEach((hand) => {
-    const handType = getHandType(hand);
+    const handType = getHandTypeFromHand(hand);
     const highestHandSameAsCurrent =
       orderedHands.length > 0 &&
       handMapping[orderedHands[orderedHands.length - 1]] ===
@@ -220,7 +261,7 @@ export function orderHands(hands: string[]): string[] {
     if (indexOfFirstHigherHand < 0 && !highestHandSameAsCurrent) {
       // If there isn't one AND the last hand is not the same as the current
       // just push it to the end of the list
-    //   console.log("Adding ", hand);
+      //   console.log("Adding ", hand);
       orderedHands.push(hand);
     } else {
       // If the same or one higher

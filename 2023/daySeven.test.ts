@@ -1,5 +1,5 @@
 import { describe, expect, it } from "@jest/globals";
-import { orderHands } from "./daySeven";
+import { CARD_MAPPING_ONE, getHandType, orderHands } from "./daySeven";
 
 describe("getRangesFromMap", () => {
   it("returns the correct order with no tie breaks", () => {
@@ -12,7 +12,7 @@ describe("getRangesFromMap", () => {
       "AA123",
       "12345",
     ];
-    const result = orderHands(hands);
+    const result = orderHands(hands, CARD_MAPPING_ONE, getHandType);
     expect(result).toStrictEqual([
       "12345",
       "AA123",
@@ -34,7 +34,7 @@ describe("getRangesFromMap", () => {
       "AA123",
       "12345",
     ];
-    const result = orderHands(hands);
+    const result = orderHands(hands, CARD_MAPPING_ONE, getHandType);
     expect(result).toStrictEqual([
       "12345",
       "AA123",
@@ -56,7 +56,7 @@ describe("getRangesFromMap", () => {
       "AAAAA",
       "AAAAK",
     ];
-    const result = orderHands(hands);
+    const result = orderHands(hands, CARD_MAPPING_ONE, getHandType);
     expect(result).toStrictEqual([
       "12345",
       "AA123",
@@ -78,7 +78,7 @@ describe("getRangesFromMap", () => {
       "AAAAA",
       "TT123",
     ];
-    const result = orderHands(hands);
+    const result = orderHands(hands, CARD_MAPPING_ONE, getHandType);
     expect(result).toStrictEqual([
       "12345",
       "TT123",
@@ -100,7 +100,7 @@ describe("getRangesFromMap", () => {
       "AAA12",
       "TT123",
     ];
-    const result = orderHands(hands);
+    const result = orderHands(hands, CARD_MAPPING_ONE, getHandType);
     expect(result).toStrictEqual([
       "12345",
       "TT123",
@@ -122,7 +122,7 @@ describe("getRangesFromMap", () => {
       "88812",
       "QQQ12",
     ];
-    const result = orderHands(hands);
+    const result = orderHands(hands, CARD_MAPPING_ONE, getHandType);
     expect(result).toStrictEqual([
       "11145",
       "333KA",
@@ -136,13 +136,13 @@ describe("getRangesFromMap", () => {
 
   it("returns the correct order with a single hand", () => {
     const hands = ["11145"];
-    const result = orderHands(hands);
+    const result = orderHands(hands, CARD_MAPPING_ONE, getHandType);
     expect(result).toStrictEqual(["11145"]);
   });
 
   it("returns the correct order with a high card", () => {
     const hands = ["11112", "11113"];
-    const result = orderHands(hands);
+    const result = orderHands(hands, CARD_MAPPING_ONE, getHandType);
     expect(result).toStrictEqual(["11112", "11113"]);
   });
 
@@ -193,7 +193,7 @@ describe("getRangesFromMap", () => {
       "442A6",
       "73933",
     ];
-    const result = orderHands(hands);
+    const result = orderHands(hands, CARD_MAPPING_ONE, getHandType);
     expect(result).toStrictEqual([]);
   });
 });
