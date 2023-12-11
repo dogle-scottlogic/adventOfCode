@@ -6,6 +6,7 @@ import { daySixPartOne, daySixPartTwo } from "./6daySix/daySix";
 import { dayThreePartOne, dayThreePartTwo } from "./3dayThree/dayThree";
 import { dayTwoPartOne, dayTwoPartTwo } from "./2dayTwo/dayTwo";
 import { dayEightPartOne, dayEightPartTwo } from "./8dayEight/dayEight";
+import { dayNinePartOne, dayNinePartTwo } from "./9dayNine/dayNine";
 
 // dayOnePartOne();
 // dayOnePartTwo();
@@ -22,4 +23,6 @@ import { dayEightPartOne, dayEightPartTwo } from "./8dayEight/dayEight";
 // daySevenPartOne();
 // daySevenPartTwo();
 // dayEightPartOne();
-dayEightPartTwo();
+// dayEightPartTwo();
+// dayNinePartOne();
+dayNinePartTwo();
