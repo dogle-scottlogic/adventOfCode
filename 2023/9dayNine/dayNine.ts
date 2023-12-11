@@ -13,9 +13,16 @@ export function dayNinePartOne() {
     line.split(" ").map((x: string) => Number(x))
   );
   const results = histories.map(calculateHistory);
-  //   const results = calculateHistory(histories[0]);
-
   console.log(results.reduce((c,p) => c + p));
+}
+
+export function dayNinePartTwo() {
+    const data = readData();
+    const histories = data.map((line) =>
+      line.split(" ").map((x: string) => Number(x))
+    );
+    const results = histories.map(calculatePreviousHistory);
+    console.log(results.reduce((c,p) => c + p));
 }
 
 function calculateSequences(history: number[]): number[][] {
@@ -48,3 +55,17 @@ function calculateHistory(history: number[]): number {
   }
   return sequences[0][sequences[0].length - 1];
 }
+
+function calculatePreviousHistory(history: number[]): number {
+    const sequences = calculateSequences(history);
+    // Extrapolate
+    // Add a zero to the last list;
+    sequences[sequences.length - 1].unshift(0);
+    for (let i = sequences.length - 2; i >= 0; i--) {
+      sequences[i].unshift(
+        sequences[i][0] -
+          sequences[i + 1][0]
+      );
+    }
+    return sequences[0][0];
+  }
