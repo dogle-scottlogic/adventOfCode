@@ -45,11 +45,67 @@ function parseData(data: string[]): { map: Map; start: Coords } {
 export function dayTenPartOne() {
   const data = readData();
   const { map, start } = parseData(data);
-  console.log(map);
-  console.log(start);
+  //   console.log(map);
+  //   console.log(start);
   const s = findS(start, map);
   const count = tracePath(start, map, s);
   console.log(count / 2);
+}
+
+export function dayTenPartTwo() {
+  const data = readData();
+  const { map, start } = parseData(data);
+  const s = findS(start, map);
+  const mapCoords = documentPath(start, map, s);
+  let count = 0;
+  let innerLoop = false;
+  let lastLoopValue: MapValue = ".";
+  // itterate the map
+  for (let rowIndex = 0; rowIndex < map.length; rowIndex++) {
+    for (let colIndex = 0; colIndex < map[rowIndex].length; colIndex++) {
+      const cellValue =
+        map[rowIndex][colIndex] === "S" ? s : map[rowIndex][colIndex];
+      const key = `${rowIndex}:${colIndex}`;
+      if (mapCoords[key] != null) {
+        innerLoop = isInnerLoop(cellValue, lastLoopValue, innerLoop);
+      }
+
+      if (innerLoop && mapCoords[key] == null) {
+        count++;
+      }
+      lastLoopValue = cellValue === "-" ? lastLoopValue : cellValue;
+    }
+  }
+  console.log("Count: ", count);
+}
+
+function isInnerLoop(
+  cellValue: MapValue,
+  lastLoopValue: MapValue,
+  innerLoop: boolean
+): boolean {
+  // If first bit of loop I've seen we're in the inner loop
+  // Ignore dashes
+  if (cellValue === "-") {
+    return innerLoop;
+  }
+
+  if (lastLoopValue === "L" && cellValue === "7") {
+    return innerLoop;
+  }
+
+  if (lastLoopValue === "F" && cellValue === "J") {
+    return innerLoop;
+  }
+
+  if (!innerLoop) {
+    return true;
+  }
+
+  if ((lastLoopValue === "|" && cellValue === "L") || cellValue === "F") {
+    return false;
+  }
+  return false;
 }
 
 function findS(startCoords: Coords, map: Map): MapValue {
@@ -218,7 +274,7 @@ function tracePath(startCoords: Coords, map: Map, sValue: MapValue): number {
         if (nextValidStep.length === 0) {
           // First one we've seen
           nextValidStep = boundary;
-        //   console.log("Next Step:", nextValidStep);
+          //   console.log("Next Step:", nextValidStep);
           return nextValidStep;
         }
       }
@@ -234,4 +290,54 @@ function tracePath(startCoords: Coords, map: Map, sValue: MapValue): number {
     prevCoords = currentCoords;
   }
   return count;
+}
+
+/**
+ *  return either the number of steps or null if an invalid path.
+ */
+function documentPath(
+  startCoords: Coords,
+  map: Map,
+  sValue: MapValue
+): { [key: string]: MapValue } {
+  const pathCoords: { [key: string]: MapValue } = {};
+  const addCoords = (coords: Coords) =>
+    (pathCoords[`${coords[0]}:${coords[1]}`] = map[coords[0]][coords[1]]);
+  const getNextCoords = (prevCoords: Coords, currentCoords: Coords): Coords => {
+    let currentValue = map[currentCoords[0]][currentCoords[1]];
+    if (currentValue === "S") {
+      currentValue = sValue;
+    }
+    let nextValidStep: Coords = [];
+    const boundaries = getBoundaryCoords(currentCoords, map);
+    for (const [position, boundary] of Object.entries(boundaries)) {
+      // Check each boundary to see if a valid connection
+      const nextValue = map[boundary[0]][boundary[1]];
+      const isValid = isValidBoundary(
+        currentValue,
+        position,
+        nextValue === "S" ? sValue : nextValue
+      );
+      if (isValid && !coordsAreSame(boundary, prevCoords)) {
+        // If it's valid and not where we've just come from
+        if (nextValidStep.length === 0) {
+          // First one we've seen
+          nextValidStep = boundary;
+          //   console.log("Next Step:", nextValidStep);
+          return nextValidStep;
+        }
+      }
+    }
+    return nextValidStep;
+  };
+  addCoords(startCoords);
+  let nextCoords = getNextCoords(startCoords, startCoords);
+  let prevCoords = startCoords;
+  while (!coordsAreSame(nextCoords, startCoords)) {
+    addCoords(nextCoords);
+    let currentCoords = nextCoords;
+    nextCoords = getNextCoords(prevCoords, currentCoords);
+    prevCoords = currentCoords;
+  }
+  return pathCoords;
 }
