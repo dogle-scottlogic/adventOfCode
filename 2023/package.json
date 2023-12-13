@@ -4,7 +4,7 @@
   "description": "advent of code 2023",
   "main": "index.js",
   "scripts": {
-    "test": "npx tsc && jest",
+    "test": "npx tsc && jest -- dayEleven.test.ts",
     "compile": "tsc --resolveJsonModule",
     "start": "npx tsc && node index.js"
   },
